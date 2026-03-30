@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LATIMO • Cleaning & Supplies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:   #04142e;
+            --navy2:  #071e45;
+            --blue:   #1459c0;
+            --sky:    #3b9eff;
+            --ice:    #c9e4ff;
+            --white:  #f4f9ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--white);
+            color: var(--navy);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ---- GRID / NOISE OVERLAYS ---- */
+        .noise::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 2;
+        }
+        .grid-lines {
+            background-image:
+                linear-gradient(rgba(59,158,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,158,255,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* ---- NAV (base styles, hamburger added later) ---- */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 18px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(4, 20, 46, 0.55);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(59,158,255,0.2);
+            transition: background 0.4s;
+        }
+        nav:hover { background: rgba(4, 20, 46, 0.85); }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); letter-spacing: 4px; }
+        .nav-logo span { color: var(--sky); }
+        .nav-links { display: flex; gap: 36px; }
+        .nav-links a {
+            color: rgba(244,249,255,0.7); font-size: 0.8rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            text-decoration: none; transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+            height: 1px; background: var(--sky); transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            color: white; padding: 10px 24px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+            text-decoration: none; text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 20px rgba(59,158,255,0.4);
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,158,255,0.6); }
+
+        /* ---- HERO 1 ---- */
+        #hero1 {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center;
+            overflow: hidden;
+        }
+        #hero1 .bg-img {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop') center/cover no-repeat;
+            filter: brightness(0.3) saturate(1.3);
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+        #hero1 .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(120deg, rgba(4,20,46,0.97) 0%, rgba(7,30,69,0.85) 40%, rgba(20,89,192,0.35) 75%, transparent 100%);
+        }
+        #hero1 .content {
+            position: relative; z-index: 5;
+            max-width: 1200px; margin: 0 auto; padding: 0 48px;
+            width: 100%;
+        }
+
+        /* ---- GLASS CARD ---- */
+        .glass {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+        }
+        .glass-dark {
+            background: rgba(4,20,46,0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(59,158,255,0.2);
+            border-radius: 20px;
+        }
+
+        /* ---- TYPOGRAPHY ---- */
+        .display {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            line-height: 0.95;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--sky) 50%, var(--ice) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .accent-text {
+            background: linear-gradient(90deg, var(--sky), #60c0ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* ---- PILL BADGES ---- */
+        .pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 7px 18px; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+        }
+        .pill-blue {
+            background: rgba(59,158,255,0.15);
+            border: 1px solid rgba(59,158,255,0.4);
+            color: var(--sky);
+        }
+        .pill-white {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(244,249,255,0.85);
+        }
+        .dot-pulse {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--sky);
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.6); } }
+
+        /* ---- STATS ROW ---- */
+        .stat-item {
+            text-align: center;
+            padding: 20px 32px;
+            transition: transform 0.3s;
+        }
+        .stat-item:hover { transform: translateY(-6px); }
+        .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; letter-spacing: 2px; line-height: 1; }
+
+        /* ---- SECTION LABEL ---- */
+        .section-label {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--sky);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-label::before, .section-label::after {
+            content: ''; flex: 0 0 30px; height: 1px; background: var(--sky);
+        }
+
+        /* ---- SERVICES CARDS ---- */
+        .service-card {
+            background: white;
+            border: 1px solid rgba(20,89,192,0.1);
+            border-radius: 24px;
+            padding: 36px;
+            transition: transform 0.35s cubic-bezier(.17,.67,.32,1.28), box-shadow 0.35s, border-color 0.35s;
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--sky));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 32px 64px rgba(20,89,192,0.18);
+            border-color: rgba(59,158,255,0.4);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 64px; height: 64px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(20,89,192,0.12), rgba(59,158,255,0.08));
+            border: 1px solid rgba(59,158,255,0.2);
+            transition: transform 0.3s;
+        }
+        .service-card:hover .service-icon { transform: rotate(-6deg) scale(1.1); }
+
+        /* ---- HERO 2 ---- */
+        #hero2 {
+            position: relative; min-height: 90vh;
+            display: flex; align-items: center; overflow: hidden;
+        }
+        #hero2 .bg-img {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            filter: brightness(0.25) saturate(1.5);
+        }
+        #hero2 .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(100deg, rgba(4,20,46,0.95) 0%, rgba(7,30,69,0.8) 45%, rgba(20,89,192,0.3) 80%, transparent 100%);
+        }
+
+        /* ---- SUPPLY LIST ---- */
+        .supply-item {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 24px; border-radius: 16px;
+            border: 1px solid rgba(59,158,255,0.15);
+            background: rgba(255,255,255,0.04);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s;
+            cursor: default;
+        }
+        .supply-item:hover {
+            background: rgba(59,158,255,0.1);
+            border-color: rgba(59,158,255,0.5);
+            transform: translateX(8px);
+        }
+        .supply-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem; color: rgba(59,158,255,0.3);
+            min-width: 36px; line-height: 1;
+            transition: color 0.3s;
+        }
+        .supply-item:hover .supply-num { color: var(--sky); }
+
+        /* ---- WHY US ---- */
+        .why-card {
+            padding: 36px; border-radius: 24px;
+            background: linear-gradient(135deg, var(--navy2), rgba(20,89,192,0.2));
+            border: 1px solid rgba(59,158,255,0.15);
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .why-card:hover {
+            border-color: rgba(59,158,255,0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(20,89,192,0.25);
+        }
+
+        /* ---- HERO 3 ---- */
+        #hero3 {
+            position: relative; height: 70vh; min-height: 500px;
+            display: flex; align-items: center; overflow: hidden;
+        }
+        #hero3 .bg-img {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            filter: brightness(0.3) saturate(1.4);
+        }
+        #hero3 .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(4,20,46,0.98) 0%, rgba(20,89,192,0.6) 60%, rgba(59,158,255,0.2) 100%);
+        }
+
+        /* ---- CONTACT ---- */
+        .contact-input {
+            width: 100%; padding: 16px 20px; border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(59,158,255,0.2);
+            color: white; font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+            outline: none; transition: border-color 0.3s, background 0.3s;
+        }
+        .contact-input:focus {
+            border-color: var(--sky);
+            background: rgba(59,158,255,0.1);
+        }
+        .contact-input::placeholder { color: rgba(255,255,255,0.35); }
+
+        /* ---- FOOTER ---- */
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(59,158,255,0.15);
+        }
+
+        /* ---- DIVIDER LINE ---- */
+        .line-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59,158,255,0.4), transparent);
+        }
+
+        /* ---- SCROLL INDICATOR ---- */
+        .scroll-hint {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+        }
+        .scroll-mouse {
+            width: 28px; height: 46px; border-radius: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex; justify-content: center; padding-top: 8px;
+        }
+        .scroll-wheel {
+            width: 4px; height: 8px; background: var(--sky); border-radius: 2px;
+            animation: scrollDown 1.6s ease-in-out infinite;
+        }
+        @keyframes scrollDown { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
+
+        /* ---- FLOATING CTA ---- */
+        .float-cta {
+            position: fixed; bottom: 28px; right: 28px; z-index: 90;
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            color: white; padding: 14px 24px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; text-decoration: none;
+            box-shadow: 0 8px 32px rgba(59,158,255,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .float-cta:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(59,158,255,0.7); }
+
+        /* ---- BBB BADGE ---- */
+        .bee-badge {
+            position: absolute; top: 120px; right: 48px; z-index: 10;
+            padding: 20px 24px; border-radius: 20px; text-align: center;
+        }
+
+        /* ---- ANIMATIONS ---- */
+        .fade-up {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
+        /* ===== FULLY RESPONSIVE + HAMBURGER (added without changing original) ===== */
+        /* Hide hamburger by default, show only on mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 200;
+            position: relative;
+        }
+        .hamburger-line {
+            width: 26px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        /* mobile menu overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(4, 20, 46, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 150;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu a {
+            color: rgba(244,249,255,0.8);
+            font-size: 1.6rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .mobile-menu a:hover { color: var(--sky); }
+        .mobile-menu .close-hamburger {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+        }
+        /* adjust nav padding for small screens */
+        @media (max-width: 900px) {
+            nav { padding: 14px 24px; }
+            .nav-links { display: none; }   /* hide original desktop links */
+            .hamburger { display: flex; }    /* show hamburger */
+            /* keep the original CTA but maybe shrink a bit */
+            .nav-cta { font-size: 0.7rem; padding: 8px 18px; }
+        }
+        @media (max-width: 600px) {
+            .nav-logo { font-size: 1.8rem; }
+            .nav-cta { display: none; }  /* hide CTA on very small, floating cta exists */
+        }
+
+        /* make all sections responsive using original classes + stacking */
+        @media (max-width: 1024px) {
+            #hero1 .content { padding: 0 24px; }
+            .bee-badge { top: 100px; right: 24px; padding: 16px; }
+            .bee-badge div[style*="2.6rem"] { font-size: 2rem !important; }
+        }
+        @media (max-width: 768px) {
+            .bee-badge { display: none; } /* already hidden per original CSS, but ensure */
+            .stat-item { padding: 12px 16px; }
+            .stat-num { font-size: 2.5rem; }
+            #hero1 .content .fade-up.stagger-4 .stat-item { padding: 12px; }
+            .display { word-break: break-word; }
+            /* about grid */
+            #about > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px;
+            }
+            /* services grid */
+            #services > div > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            /* hero2 inner content */
+            #hero2 > div[style*="max-width: 1200px"] {
+                padding: 0 24px;
+            }
+            #hero2 .glass-dark {
+                bottom: 24px !important;
+                right: 24px !important;
+                padding: 16px !important;
+            }
+            #hero2 .glass-dark div[style*="1.3rem"] { font-size: 1.1rem !important; }
+            /* supplies grid */
+            #supplies > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 48px;
+            }
+            /* why us grid */
+            #why-section + section > div > div[style*="grid-template-columns: repeat(4, 1fr)"],
+            section[style*="background: linear-gradient(180deg, #eaf2ff"] > div > div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            /* contact grid */
+            #contact > div > div[style*="grid-template-columns: 1fr 1.2fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 48px;
+            }
+            #hero3 > div[style*="justify-content: space-between"] {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 24px !important;
+            }
+            .scroll-hint { display: none; }
+        }
+        @media (max-width: 550px) {
+            #why-section + section > div > div[style*="grid-template-columns: repeat(4, 1fr)"],
+            section[style*="background: linear-gradient(180deg, #eaf2ff"] > div > div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            #hero1 .content .fade-up.stagger-4 {
+                flex-direction: column;
+                align-items: flex-start;
+                border-top: none;
+                padding-top: 20px;
+            }
+            #hero1 .content .fade-up.stagger-4 .stat-item {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(59,158,255,0.2);
+                padding: 20px 0;
+                width: 100%;
+            }
+            .float-cta { padding: 12px 20px; font-size: 0.7rem; right: 16px; bottom: 16px; }
+        }
+        /* make hero2 floating card responsive */
+        @media (max-width: 600px) {
+            #hero2 .glass-dark {
+                position: relative !important;
+                bottom: auto !important;
+                right: auto !important;
+                margin-top: 40px;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- mobile overlay menu (added pure HTML, no original changed) -->
+<div class="mobile-menu" id="mobileMenu">
+    <span class="close-hamburger" id="closeHamburger">&times;</span>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="mailto:Latimofs@gmail.com" style="background: linear-gradient(135deg, var(--blue), var(--sky)); padding: 12px 36px; border-radius: 50px; font-size: 1.2rem; margin-top: 20px; color:white;">Get a Quote</a>
+</div>
+
+<nav>
+    <div class="nav-logo">LATI<span>MO</span></div>
+    <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <a href="mailto:Latimofs@gmail.com" class="nav-cta">Get a Quote</a>
+    <!-- hamburger button (added) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+</nav>
+
+<section id="hero1" class="noise">
+    <div class="bg-img"></div>
+    <div class="overlay grid-lines"></div>
+
+    <div class="bee-badge glass">
+        <div style="color: var(--sky); font-family: 'Bebas Neue'; font-size: 2.6rem; letter-spacing: 3px; line-height: 1;">Level 1</div>
+        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">B-BBEE Certified</div>
+        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 0.7rem; letter-spacing: 1px;">100% Black Women Owned</div>
+    </div>
+
+    <div class="content">
+        <div style="margin-bottom: 28px;" class="fade-up">
+            <span class="pill pill-blue"><span class="dot-pulse"></span> Est. 2012 • Kathu, Northern Cape</span>
+        </div>
+
+        <h1 class="fade-up stagger-1" style="font-size: clamp(4.5rem, 10vw, 10rem);">
+            <span class="display gradient-text">Building<br>Maintenance</span><br>
+            <span class="display" style="color: rgba(255,255,255,0.25); font-size: 0.55em;">& Industrial Safety</span>
+        </h1>
+
+        <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.85); font-size: 1.15rem; font-weight: 300; max-width: 520px; margin-top: 24px; line-height: 1.7;">
+            Northern Cape's trusted partner for industrial cleaning, safety signage, PPE supply, and building maintenance — delivering zero-harm solutions since 2012.
+        </p>
+
+        <div class="fade-up stagger-3" style="display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+            <a href="#services" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 16px 36px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 40px rgba(59,158,255,0.4);"
+               onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(59,158,255,0.6)'"
+               onmouseout="this.style.transform=''; this.style.boxShadow='0 0 40px rgba(59,158,255,0.4)'">
+                Our Services →
+            </a>
+            <a href="tel:0717188015" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.07); color: white; padding: 16px 36px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s, border-color 0.3s;"
+               onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.borderColor='rgba(255,255,255,0.5)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.07)'; this.style.borderColor='rgba(255,255,255,0.2)'">
+                📞 071 718 8015
+            </a>
+        </div>
+
+
+        <div class="fade-up stagger-4" style="display: flex; gap: 0; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(59,158,255,0.2); max-width: 600px;">
+            <div class="stat-item" style="border-right: 1px solid rgba(59,158,255,0.2);">
+                <div class="stat-num accent-text">6+</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Years Active</div>
+            </div>
+            <div class="stat-item" style="border-right: 1px solid rgba(59,158,255,0.2); padding-left: 40px;">
+                <div class="stat-num accent-text">100%</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">BWO Company</div>
+            </div>
+            <div class="stat-item" style="padding-left: 40px;">
+                <div class="stat-num accent-text">0</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Harm Policy</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<section id="about" style="background: var(--white); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
+            <div class="section-label" style="justify-content: center; margin-bottom: 16px;">Who We Are</div>
+            <h2 class="display gradient-text" style="font-size: clamp(3rem,6vw,6rem); background: linear-gradient(135deg, var(--navy), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                About LATIMO
+            </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+            <!-- Left: story -->
+            <div class="fade-up stagger-1">
+                <div style="width: 56px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 28px;"></div>
+                <p style="font-size: 1.1rem; line-height: 1.85; color: #374151; margin-bottom: 20px;">
+                    LATIMO is a Northern Cape (Kathu) based cleaning and supplying company which started in <strong style="color: var(--navy);">2012</strong>, providing exceptional quality cleaning and sustainable solutions for mining plants and industrial sectors.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.85; color: #374151;">
+                    With over <strong style="color: var(--navy);">6 years of experience</strong>, we've built our reputation on the quality of service and the unwavering commitment of our director and staff — resulting in one of the highest customer retention rates in the cleaning industry.
+                </p>
+                <div style="display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+                    <span class="pill" style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue);">✦ Zero Harm</span>
+                    <span class="pill" style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue);">✦ Community Focus</span>
+                    <span class="pill" style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue);">✦ Sustainable</span>
+                </div>
+            </div>
+
+            <!-- Right: mission -->
+            <div class="fade-up stagger-2" style="background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 28px; padding: 48px; border: 1px solid rgba(59,158,255,0.2); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(59,158,255,0.12) 0%, transparent 70%); border-radius: 50%;"></div>
+                <div style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(20,89,192,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
+                <div style="color: var(--sky); font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;">Mission Statement</div>
+                <blockquote style="font-size: 1.3rem; font-style: italic; color: white; line-height: 1.6; font-weight: 300; border-left: 3px solid var(--sky); padding-left: 24px; margin-bottom: 28px;">
+                    "To be the cleaning and supplying contractor of choice in our chosen operating areas for clients."
+                </blockquote>
+                <div style="height: 1px; background: linear-gradient(90deg, rgba(59,158,255,0.4), transparent); margin-bottom: 28px;"></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="padding: 14px 16px; background: rgba(255,255,255,0.06); border-radius: 12px; border: 1px solid rgba(59,158,255,0.1);">
+                        <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Transparency</div>
+                    </div>
+                    <div style="padding: 14px 16px; background: rgba(255,255,255,0.06); border-radius: 12px; border: 1px solid rgba(59,158,255,0.1);">
+                        <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Commitment</div>
+                    </div>
+                    <div style="padding: 14px 16px; background: rgba(255,255,255,0.06); border-radius: 12px; border: 1px solid rgba(59,158,255,0.1);">
+                        <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Quality</div>
+                    </div>
+                    <div style="padding: 14px 16px; background: rgba(255,255,255,0.06); border-radius: 12px; border: 1px solid rgba(59,158,255,0.1);">
+                        <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Integrity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" style="background: linear-gradient(180deg, #f4f9ff 0%, #eaf2ff 100%); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
+            <div class="section-label" style="justify-content: center; margin-bottom: 16px;">What We Do</div>
+            <h2 class="display" style="font-size: clamp(3rem,6vw,6rem); background: linear-gradient(135deg, var(--navy), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Cleaning Services
+            </h2>
+            <p style="color: #6b7280; font-size: 1.05rem; margin-top: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">No job too big or small — from mining plants to light vehicles, we do it all.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div class="service-card fade-up stagger-1">
+                <div class="service-icon">🏭</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Plant Cleaning</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Industrial-grade cleaning for mining plants and processing facilities. Safe, thorough, and compliant.</p>
+            </div>
+            <div class="service-card fade-up stagger-2">
+                <div class="service-icon">🚧</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Mining Road Safety Signs</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Supply, installation, and maintenance of regulation road safety signage for mining operations.</p>
+            </div>
+            <div class="service-card fade-up stagger-3">
+                <div class="service-icon">🏗️</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Change House & Site Offices</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Hygienic cleaning of change houses, site offices, and on-site buildings to the highest standard.</p>
+            </div>
+            <div class="service-card fade-up stagger-1">
+                <div class="service-icon">🚜</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">CAT & Komatsu Equipment</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Specialist cleaning of heavy mining mobile equipment including CAT and Komatsu machinery.</p>
+            </div>
+            <div class="service-card fade-up stagger-2">
+                <div class="service-icon">🌿</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Grass & Weed Clearing</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Vegetation management for mining and construction sites — safe and efficient clearing.</p>
+            </div>
+            <div class="service-card fade-up stagger-3">
+                <div class="service-icon">🧺</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Industrial Laundry & Carpet</h3>
+                <p style="color: #6b7280; font-size: 0.92rem; line-height: 1.7;">Full industrial laundry services plus carpet and upholstery cleaning for corporate environments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HERO 2 — SAFETY SIGNS ===== -->
+<section id="hero2" class="noise">
+    <div class="bg-img"></div>
+    <div class="overlay grid-lines"></div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%;">
+        <div style="max-width: 680px;">
+            <div style="margin-bottom: 28px;" class="fade-up">
+                <span class="pill pill-blue"><span class="dot-pulse"></span> 24/7 Road Safety & Installation</span>
+            </div>
+            <h2 class="display fade-up stagger-1" style="font-size: clamp(4rem, 9vw, 9rem); color: white; line-height: 0.9;">
+                Signs<br>
+                <span style="color: rgba(255,255,255,0.2);">that</span><br>
+                <span class="accent-text">Save Lives</span>
+            </h2>
+            <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.8); font-size: 1.1rem; font-weight: 300; margin-top: 24px; max-width: 480px; line-height: 1.7;">
+                Mining road safety signs, custom fabrication, installation, and ongoing maintenance — delivered across the Northern Cape with precision.
+            </p>
+
+            <div class="fade-up stagger-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; max-width: 500px;">
+                <div class="glass" style="padding: 20px 24px;">
+                    <div style="color: var(--sky); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Certification</div>
+                    <div style="color: white; font-weight: 600; font-size: 0.95rem;">SANS Compliant Signs</div>
+                </div>
+                <div class="glass" style="padding: 20px 24px;">
+                    <div style="color: var(--sky); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Coverage</div>
+                    <div style="color: white; font-weight: 600; font-size: 0.95rem;">Northern Cape Wide</div>
+                </div>
+                <div class="glass" style="padding: 20px 24px;">
+                    <div style="color: var(--sky); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Industry</div>
+                    <div style="color: white; font-weight: 600; font-size: 0.95rem;">Mining & Construction</div>
+                </div>
+                <div class="glass" style="padding: 20px 24px;">
+                    <div style="color: var(--sky); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Response</div>
+                    <div style="color: white; font-weight: 600; font-size: 0.95rem;">Fast Turnaround</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating contact -->
+    <div class="glass-dark" style="position: absolute; bottom: 48px; right: 48px; z-index: 10; padding: 24px 32px; border-left: 3px solid var(--sky);">
+        <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;">Director</div>
+        <div style="color: white; font-size: 1.3rem; font-weight: 700; margin-top: 4px;">Fatima Stevens</div>
+        <div style="color: var(--sky); font-weight: 600; margin-top: 8px; font-size: 1.05rem;">071 718 8015</div>
+    </div>
+</section>
+
+<!-- ===== SUPPLIES ===== -->
+<section id="supplies" style="background: var(--navy); padding: 120px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(20,89,192,0.15) 0%, transparent 60%);"></div>
+    <div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,158,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+    <div class="grid-lines" style="position: absolute; inset: 0; opacity: 0.5;"></div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div class="fade-up">
+                <div class="section-label" style="margin-bottom: 20px;">Supply Division</div>
+                <h2 class="display" style="font-size: clamp(3rem,6vw,6rem); color: white; line-height: 0.95; margin-bottom: 24px;">
+                    What We<br><span class="accent-text">Supply</span>
+                </h2>
+                <p style="color: rgba(201,228,255,0.6); font-size: 1.05rem; line-height: 1.7; max-width: 440px;">
+                    We supply a wide range of mining materials and equipment, ensuring client needs are met at all times — from protective gear to weighbridge management.
+                </p>
+                <div style="margin-top: 40px; padding: 24px; background: rgba(255,255,255,0.04); border-radius: 16px; border: 1px solid rgba(59,158,255,0.15);">
+                    <div style="color: var(--sky); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Our Promise</div>
+                    <div style="color: white; font-size: 1rem; font-style: italic; font-weight: 300;">"Only top quality materials. Always."</div>
+                </div>
+            </div>
+
+            <div class="fade-up stagger-2" style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="supply-item">
+                    <div class="supply-num">01</div>
+                    <div>
+                        <div style="color: white; font-weight: 700; font-size: 1rem;">Personal Protective Equipment (PPE)</div>
+                        <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 4px;">Full range of personal protective clothing and gear</div>
+                    </div>
+                </div>
+                <div class="supply-item">
+                    <div class="supply-num">02</div>
+                    <div>
+                        <div style="color: white; font-weight: 700; font-size: 1rem;">Industrial Cleaning Chemicals</div>
+                        <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 4px;">Premium-grade industrial solvents and cleaning agents</div>
+                    </div>
+                </div>
+                <div class="supply-item">
+                    <div class="supply-num">03</div>
+                    <div>
+                        <div style="color: white; font-weight: 700; font-size: 1rem;">Road Safety Signs & Installation</div>
+                        <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 4px;">Custom fabrication, supply, and on-site installation</div>
+                    </div>
+                </div>
+                <div class="supply-item">
+                    <div class="supply-num">04</div>
+                    <div>
+                        <div style="color: white; font-weight: 700; font-size: 1rem;">Weigh Bridge Management Services</div>
+                        <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 4px;">Full operational and administrative weighbridge management</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section style="background: linear-gradient(180deg, #eaf2ff, #f4f9ff); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
+            <div class="section-label" style="justify-content: center; margin-bottom: 16px;">Why LATIMO</div>
+            <h2 class="display" style="font-size: clamp(3rem,6vw,5.5rem); background: linear-gradient(135deg, var(--navy), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Our Commitments
+            </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+            <div class="why-card fade-up stagger-1" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 20px;">🛡️</div>
+                <h3 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px;">Zero Harm</h3>
+                <p style="color: rgba(201,228,255,0.55); font-size: 0.875rem; line-height: 1.7;">Health and safety of all employees is monitored and protected at every step.</p>
+            </div>
+            <div class="why-card fade-up stagger-2" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 20px;">⭐</div>
+                <h3 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px;">Top Quality</h3>
+                <p style="color: rgba(201,228,255,0.55); font-size: 0.875rem; line-height: 1.7;">Only the highest quality materials and service delivery — no compromise.</p>
+            </div>
+            <div class="why-card fade-up stagger-3" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 20px;">🌍</div>
+                <h3 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px;">Sustainable</h3>
+                <p style="color: rgba(201,228,255,0.55); font-size: 0.875rem; line-height: 1.7;">All activities carried out in an environmentally conscientious manner.</p>
+            </div>
+            <div class="why-card fade-up stagger-4" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 20px;">🤝</div>
+                <h3 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; margin-bottom: 12px;">Community</h3>
+                <p style="color: rgba(201,228,255,0.55); font-size: 0.875rem; line-height: 1.7;">100% Black Women Owned — proudly rooted in the Northern Cape community.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HERO 3 — PPE / CLEANING ===== -->
+<section id="hero3" class="noise">
+    <div class="bg-img"></div>
+    <div class="overlay grid-lines"></div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;">
+        <div class="fade-up" style="max-width: 500px;">
+            <span class="pill pill-white" style="margin-bottom: 28px; display: inline-flex;">⚡ Industrial Cleaning Excellence</span>
+            <h2 class="display" style="font-size: clamp(3.5rem,7vw,7.5rem); color: white; line-height: 0.9;">
+                Professional.<br><span class="accent-text">Reliable.</span><br>
+                <span style="color: rgba(255,255,255,0.2);">Safe.</span>
+            </h2>
+            <p style="color: rgba(201,228,255,0.75); font-size: 1.05rem; font-weight: 300; margin-top: 24px; line-height: 1.7;">
+                From light duty vehicles to heavy plant equipment — LATIMO cleans it right, every time, with full compliance.
+            </p>
+        </div>
+
+        <div class="fade-up stagger-2" style="display: flex; flex-direction: column; gap: 12px; min-width: 300px;">
+            <div class="glass" style="padding: 20px 24px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s;" onmouseover="this.style.transform='translateX(-8px)'" onmouseout="this.style.transform=''">
+                <div style="width: 40px; height: 40px; background: rgba(59,158,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">🚗</div>
+                <div style="color: white; font-size: 0.9rem; font-weight: 500;">LDV & Vehicle Cleaning</div>
+            </div>
+            <div class="glass" style="padding: 20px 24px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s;" onmouseover="this.style.transform='translateX(-8px)'" onmouseout="this.style.transform=''">
+                <div style="width: 40px; height: 40px; background: rgba(59,158,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">🧪</div>
+                <div style="color: white; font-size: 0.9rem; font-weight: 500;">Chemical Supply & Application</div>
+            </div>
+            <div class="glass" style="padding: 20px 24px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s;" onmouseover="this.style.transform='translateX(-8px)'" onmouseout="this.style.transform=''">
+                <div style="width: 40px; height: 40px; background: rgba(59,158,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">🛡️</div>
+                <div style="color: white; font-size: 0.9rem; font-weight: 500;">PPE Supply & Distribution</div>
+            </div>
+            <div class="glass" style="padding: 20px 24px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s;" onmouseover="this.style.transform='translateX(-8px)'" onmouseout="this.style.transform=''">
+                <div style="width: 40px; height: 40px; background: rgba(59,158,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">⚖️</div>
+                <div style="color: white; font-size: 0.9rem; font-weight: 500;">Weigh Bridge Management</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" style="background: var(--navy2); padding: 120px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(20,89,192,0.12) 0%, transparent 70%); border-radius: 50%;"></div>
+    <div class="grid-lines" style="position: absolute; inset: 0; opacity: 0.4;"></div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;">
+            <!-- Left: info -->
+            <div class="fade-up">
+                <div class="section-label" style="margin-bottom: 20px;">Get In Touch</div>
+                <h2 class="display" style="font-size: clamp(3rem,6vw,5.5rem); color: white; line-height: 0.9; margin-bottom: 28px;">
+                    Let's Work<br><span class="accent-text">Together</span>
+                </h2>
+                <p style="color: rgba(201,228,255,0.6); font-size: 1.05rem; line-height: 1.7; margin-bottom: 48px;">
+                    Ready to discuss your cleaning, safety, or supply needs? Reach out — we respond fast.
+                </p>
+
+                <!-- Company details -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border: 1px solid rgba(59,158,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">📍</div>
+                        <div>
+                            <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px;">Address</div>
+                            <div style="color: white; font-size: 0.95rem;">4922 Dahlia Street, Kathu 8446</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border: 1px solid rgba(59,158,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">📱</div>
+                        <div>
+                            <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px;">Phone</div>
+                            <a href="tel:0717188015" style="color: var(--sky); font-size: 1.2rem; font-weight: 700; text-decoration: none;">071 718 8015</a>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border: 1px solid rgba(59,158,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">✉️</div>
+                        <div>
+                            <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px;">Email</div>
+                            <a href="mailto:Latimofs@gmail.com" style="color: var(--sky); font-size: 0.95rem; font-weight: 600; text-decoration: none;">Latimofs@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration info -->
+                <div style="margin-top: 48px; padding: 24px; background: rgba(255,255,255,0.04); border-radius: 16px; border: 1px solid rgba(59,158,255,0.15);">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.82rem;">
+                        <div>
+                            <div style="color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; font-size: 0.65rem;">Reg Nr</div>
+                            <div style="color: rgba(255,255,255,0.7); margin-top: 4px;">2012/132257/07</div>
+                        </div>
+                        <div>
+                            <div style="color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; font-size: 0.65rem;">VAT</div>
+                            <div style="color: rgba(255,255,255,0.7); margin-top: 4px;">4190264970</div>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <div style="color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; font-size: 0.65rem;">B-BBEE Status</div>
+                            <div style="color: #4ade80; margin-top: 4px; font-weight: 700;">Level 1 — 100% Black Women Owned ✓</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: contact form -->
+            <div class="fade-up stagger-2" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(59,158,255,0.2); border-radius: 28px; padding: 48px;">
+                <h3 style="color: white; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Request a Quote</h3>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 32px;">We'll get back to you within 24 hours.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div>
+                            <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Name</label>
+                            <input class="contact-input" type="text" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Company</label>
+                            <input class="contact-input" type="text" placeholder="Company name">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Email</label>
+                        <input class="contact-input" type="email" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Service Required</label>
+                        <select class="contact-input" style="cursor: pointer;">
+                            <option value="" style="background: var(--navy2);">Select a service...</option>
+                            <option style="background: var(--navy2);">Plant Cleaning</option>
+                            <option style="background: var(--navy2);">Road Safety Signs</option>
+                            <option style="background: var(--navy2);">PPE Supply</option>
+                            <option style="background: var(--navy2);">Industrial Chemicals</option>
+                            <option style="background: var(--navy2);">Weigh Bridge Management</option>
+                            <option style="background: var(--navy2);">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Message</label>
+                        <textarea class="contact-input" rows="4" placeholder="Describe your requirements..." style="resize: none;"></textarea>
+                    </div>
+                    <button
+                        style="width: 100%; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 18px; border-radius: 14px; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 30px rgba(59,158,255,0.3);"
+                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px rgba(59,158,255,0.5)'"
+                        onmouseout="this.style.transform=''; this.style.boxShadow='0 0 30px rgba(59,158,255,0.3)'"
+                        onclick="alert('Thank you! We will contact you within 24 hours.')">
+                        Send Enquiry →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="padding: 48px 0; background: var(--navy);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+            <div>
+                <div class="nav-logo" style="margin-bottom: 8px;">LATI<span>MO</span></div>
+                <div style="color: rgba(255,255,255,0.35); font-size: 0.78rem; letter-spacing: 2px;">CLEANING & SUPPLIES • KATHU, NORTHERN CAPE</div>
+            </div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <a href="about.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
+                <a href="services.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
+                <a href="#supplies" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Supplies</a>
+                <a href="contact.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+            </div>
+        </div>
+        <div class="line-divider" style="margin: 32px 0;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div style="color: rgba(255,255,255,0.25); font-size: 0.78rem;">© 2025 LATIMO (Pty) Ltd — Reg 2012/132257/07</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.25); font-size: 0.78rem;">
+                <span style="color: #4ade80;">●</span> Level 1 B-BBEE &nbsp;|&nbsp;
+                <span style="color: var(--sky);">●</span> Zero Harm Policy
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="tel:0717188015" class="float-cta">📞 Call Now</a>
+
+<script>
+    // Make toggleMenu function globally available
+    window.toggleMenu = function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('active');
+    };
+
+    // Intersection Observer for fade-up animations (original, unchanged)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Hamburger functionality
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeHamburger = document.getElementById('closeHamburger');
+
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+    }
+
+
+    
+    if (closeHamburger) {
+        closeHamburger.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+    }
+
+    // Close menu when any link is clicked
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>

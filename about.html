@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LATIMO • About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:   #04142e;
+            --navy2:  #071e45;
+            --blue:   #1459c0;
+            --sky:    #3b9eff;
+            --ice:    #c9e4ff;
+            --white:  #f4f9ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--white);
+            color: var(--navy);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .noise::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 2;
+        }
+        .grid-lines {
+            background-image:
+                linear-gradient(rgba(59,158,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,158,255,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 18px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(4, 20, 46, 0.55);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(59,158,255,0.2);
+            transition: background 0.4s;
+        }
+        nav:hover { background: rgba(4, 20, 46, 0.85); }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); letter-spacing: 4px; text-decoration: none; }
+        .nav-logo span { color: var(--sky); }
+        .nav-links { display: flex; gap: 36px; }
+        .nav-links a {
+            color: rgba(244,249,255,0.7); font-size: 0.8rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            text-decoration: none; transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+            height: 1px; background: var(--sky); transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+        .nav-links a.active { color: var(--sky); }
+        .nav-links a.active::after { transform: scaleX(1); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            color: white; padding: 10px 24px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+            text-decoration: none; text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 20px rgba(59,158,255,0.4);
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,158,255,0.6); }
+
+        /* DISPLAY */
+        .display {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            line-height: 0.95;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--sky) 50%, var(--ice) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .accent-text {
+            background: linear-gradient(90deg, var(--sky), #60c0ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .navy-text {
+            background: linear-gradient(135deg, var(--navy), var(--blue));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* PILLS */
+        .pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 7px 18px; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+        }
+        .pill-blue {
+            background: rgba(59,158,255,0.15);
+            border: 1px solid rgba(59,158,255,0.4);
+            color: var(--sky);
+        }
+        .pill-white {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(244,249,255,0.85);
+        }
+        .dot-pulse {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--sky);
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.6); } }
+
+        /* GLASS */
+        .glass {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+        }
+        .glass-dark {
+            background: rgba(4,20,46,0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(59,158,255,0.2);
+            border-radius: 20px;
+        }
+        .glass-light {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59,158,255,0.15);
+            border-radius: 20px;
+        }
+
+        /* SECTION LABEL */
+        .section-label {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--sky);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-label::before, .section-label::after {
+            content: ''; flex: 0 0 30px; height: 1px; background: var(--sky);
+        }
+
+        /* VALUE CARD */
+        .value-card {
+            padding: 28px 24px; border-radius: 20px;
+            background: white;
+            border: 1px solid rgba(20,89,192,0.1);
+            text-align: center;
+            transition: transform 0.35s cubic-bezier(.17,.67,.32,1.28), box-shadow 0.35s, border-color 0.35s;
+            position: relative; overflow: hidden;
+        }
+        .value-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--sky));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(20,89,192,0.15);
+            border-color: rgba(59,158,255,0.35);
+        }
+        .value-card:hover::before { opacity: 1; }
+
+        /* APPROACH ITEM */
+        .approach-item {
+            display: flex; align-items: flex-start; gap: 20px;
+            padding: 24px; border-radius: 16px;
+            border: 1px solid rgba(59,158,255,0.12);
+            background: rgba(255,255,255,0.04);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        .approach-item:hover {
+            background: rgba(59,158,255,0.08);
+            border-color: rgba(59,158,255,0.4);
+            transform: translateX(8px);
+        }
+        .approach-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem; color: rgba(59,158,255,0.25);
+            min-width: 36px; line-height: 1;
+            transition: color 0.3s;
+        }
+        .approach-item:hover .approach-num { color: var(--sky); }
+
+        /* STAT BLOCK */
+        .stat-block {
+            text-align: center; padding: 40px 32px;
+            transition: transform 0.3s;
+        }
+        .stat-block:hover { transform: translateY(-6px); }
+        .stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem; letter-spacing: 2px; line-height: 1;
+            background: linear-gradient(90deg, var(--sky), #60c0ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* CONTACT CARD */
+        .contact-detail {
+            display: flex; gap: 16px; align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(59,158,255,0.1);
+            transition: padding-left 0.3s;
+        }
+        .contact-detail:hover { padding-left: 8px; }
+        .contact-detail:last-child { border-bottom: none; }
+        .contact-icon {
+            width: 44px; height: 44px; flex-shrink: 0;
+            background: rgba(59,158,255,0.12);
+            border: 1px solid rgba(59,158,255,0.25);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        .contact-detail:hover .contact-icon { background: rgba(59,158,255,0.25); }
+
+        /* SCROLL */
+        .scroll-hint {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+            z-index: 10;
+        }
+        .scroll-mouse {
+            width: 28px; height: 46px; border-radius: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex; justify-content: center; padding-top: 8px;
+        }
+        .scroll-wheel {
+            width: 4px; height: 8px; background: var(--sky); border-radius: 2px;
+            animation: scrollDown 1.6s ease-in-out infinite;
+        }
+        @keyframes scrollDown { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
+
+        /* LINE DIVIDER */
+        .line-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59,158,255,0.4), transparent);
+        }
+
+        /* FLOAT CTA */
+        .float-cta {
+            position: fixed; bottom: 28px; right: 28px; z-index: 90;
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            color: white; padding: 14px 24px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; text-decoration: none;
+            box-shadow: 0 8px 32px rgba(59,158,255,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .float-cta:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(59,158,255,0.7); }
+
+        /* ANIMATIONS */
+        .fade-up {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+
+        /* FLOAT DIRECTOR */
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim { animation: float 4s ease-in-out infinite; }
+
+        /* TIMELINE DOT */
+        .timeline-step {
+            position: relative; padding-left: 48px;
+        }
+        .timeline-step::before {
+            content: '';
+            position: absolute; left: 16px; top: 0; bottom: -32px;
+            width: 1px; background: linear-gradient(to bottom, var(--sky), transparent);
+        }
+        .timeline-step:last-child::before { display: none; }
+        .timeline-dot {
+            position: absolute; left: 8px; top: 4px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            border: 3px solid var(--white);
+            box-shadow: 0 0 16px rgba(59,158,255,0.5);
+        }
+
+        /* ===== HAMBURGER & MOBILE RESPONSIVE (added, preserving original) ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 200;
+        }
+        .hamburger-line {
+            width: 26px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(4, 20, 46, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 150;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu a {
+            color: rgba(244,249,255,0.8);
+            font-size: 1.6rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .mobile-menu a:hover { color: var(--sky); }
+        .mobile-menu .close-hamburger {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* responsive nav */
+        @media (max-width: 900px) {
+            nav { padding: 14px 24px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-cta { font-size: 0.7rem; padding: 8px 18px; }
+        }
+        @media (max-width: 600px) {
+            .nav-logo { font-size: 1.8rem; }
+            .nav-cta { display: none; }
+        }
+
+        /* responsive sections */
+        @media (max-width: 1024px) {
+            .glass[style*="top: 110px; right: 48px;"] { top: 100px; right: 24px; padding: 16px 20px; }
+            .glass[style*="top: 110px; right: 48px;"] div[style*="font-size: 3rem"] { font-size: 2.2rem !important; }
+        }
+        @media (max-width: 900px) {
+            #story > div > div[style*="grid-template-columns: 1fr 1.6fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px;
+            }
+            #story .sticky { position: relative; top: 0; }
+            .value-card[style*="grid-column: span 2"] { grid-column: span 1 !important; }
+            #story .fade-up[style*="position: sticky"] { position: relative; top: 0; }
+        }
+        @media (max-width: 800px) {
+            section > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            .stat-block { padding: 28px 16px; }
+            .stat-num { font-size: 3rem; }
+            .glass-dark.float-anim { bottom: 24px; right: 24px; padding: 16px; }
+            .glass-dark.float-anim div[style*="font-size: 1.25rem"] { font-size: 1rem !important; }
+            .scroll-hint { display: none; }
+            /* hero stats wrap */
+            section .fade-up.stagger-3[style*="display: flex"] {
+                flex-wrap: wrap;
+                gap: 16px;
+                border-top: none;
+                padding-top: 20px;
+            }
+            section .fade-up.stagger-3[style*="display: flex"] > div {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(59,158,255,0.2);
+                padding: 16px 0 !important;
+                width: 100%;
+            }
+        }
+        @media (max-width: 650px) {
+            #leadership > div > div[style*="grid-template-columns: 1fr 1.6fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px;
+            }
+            .value-card { padding: 20px; }
+            #story .value-card[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .contact-detail { flex-wrap: wrap; }
+            .float-cta { padding: 12px 18px; font-size: 0.7rem; right: 16px; bottom: 16px; }
+            div[style*="position: fixed; bottom: 28px; left: 28px;"] { left: 16px; bottom: 16px; padding: 8px 14px; }
+            .bee-badge { display: none; }
+        }
+        @media (max-width: 480px) {
+            .approach-item { flex-direction: column; gap: 8px; }
+            .approach-num { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- mobile overlay menu (added) -->
+<div class="mobile-menu" id="mobileMenu">
+    <span class="close-hamburger" id="closeHamburger">&times;</span>
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="#" onclick="toggleMenu()">About</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="mailto:Latimofs@gmail.com" onclick="toggleMenu()" style="background: linear-gradient(135deg, var(--blue), var(--sky)); padding: 12px 36px; border-radius: 50px; font-size: 1.2rem; margin-top: 20px; color:white;">Get a Quote</a>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="latimo.html" class="nav-logo">LATI<span>MO</span></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <a href="mailto:Latimofs@gmail.com" class="nav-cta">Get a Quote</a>
+    <!-- hamburger button -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section style="position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;" class="noise">
+    <div style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop') center/cover no-repeat; filter: brightness(0.25) saturate(1.4); transform: scale(1.05); animation: slowZoom 20s ease-in-out infinite alternate;"></div>
+    <style>@keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }</style>
+    <div style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(4,20,46,0.98) 0%, rgba(7,30,69,0.88) 40%, rgba(20,89,192,0.4) 75%, transparent 100%);"></div>
+    <div class="grid-lines" style="position: absolute; inset: 0;"></div>
+
+    <!-- Breadcrumb line -->
+    <div style="position: absolute; top: 110px; left: 48px; z-index: 10; display: flex; align-items: center; gap: 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4);">
+        <a href="latimo.html" style="color: rgba(59,158,255,0.7); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(59,158,255,0.7)'">Home</a>
+        <span style="color: rgba(255,255,255,0.2);">/</span>
+        <span style="color: white;">About Us</span>
+    </div>
+
+    <!-- B-BBEE badge top right -->
+    <div class="glass" style="position: absolute; top: 110px; right: 48px; z-index: 10; padding: 20px 28px; text-align: center;">
+        <div style="color: var(--sky); font-family: 'Bebas Neue'; font-size: 3rem; letter-spacing: 3px; line-height: 1;">Level 1</div>
+        <div style="color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">B-BBEE Certified</div>
+        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); font-size: 0.68rem; letter-spacing: 1px;">100% Black Women Owned</div>
+    </div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%;">
+        <div style="margin-bottom: 28px;" class="fade-up">
+            <span class="pill pill-blue"><span class="dot-pulse"></span> Northern Cape • Est. 2012 • Kathu</span>
+        </div>
+
+        <h1 class="fade-up stagger-1" style="font-size: clamp(5rem, 12vw, 12rem);">
+            <span class="display" style="color: rgba(255,255,255,0.18); display: block; font-size: 0.35em; letter-spacing: 6px; margin-bottom: 8px;">Who We Are</span>
+            <span class="display gradient-text">About</span><br>
+            <span class="display" style="color: rgba(255,255,255,0.9);">LATIMO</span>
+        </h1>
+
+        <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.8); font-size: 1.15rem; font-weight: 300; max-width: 540px; margin-top: 24px; line-height: 1.75;">
+            Cleaning, supplying, and safety solutions — rooted in Kathu, serving the mining and industrial sectors with integrity since 2012.
+        </p>
+
+        <!-- Hero stats -->
+        <div class="fade-up stagger-3" style="display: flex; gap: 0; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(59,158,255,0.2); max-width: 600px;">
+            <div style="text-align: center; padding: 16px 32px; border-right: 1px solid rgba(59,158,255,0.2);">
+                <div style="font-family: 'Bebas Neue'; font-size: 3.5rem; background: linear-gradient(90deg, var(--sky), #60c0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">6+</div>
+                <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Years Active</div>
+            </div>
+            <div style="text-align: center; padding: 16px 32px; border-right: 1px solid rgba(59,158,255,0.2);">
+                <div style="font-family: 'Bebas Neue'; font-size: 3.5rem; background: linear-gradient(90deg, var(--sky), #60c0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">98%</div>
+                <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Client Retention</div>
+            </div>
+            <div style="text-align: center; padding: 16px 32px;">
+                <div style="font-family: 'Bebas Neue'; font-size: 3.5rem; background: linear-gradient(90deg, var(--sky), #60c0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">Zero</div>
+                <div style="color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Harm Policy</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating director card -->
+    <div class="glass-dark float-anim" style="position: absolute; bottom: 48px; right: 48px; z-index: 10; padding: 24px 28px; border-left: 3px solid var(--sky);">
+        <div style="color: rgba(255,255,255,0.4); font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;">Director</div>
+        <div style="color: white; font-size: 1.25rem; font-weight: 700; margin-top: 4px;">Fatima Stevens</div>
+        <div style="color: var(--sky); font-weight: 600; margin-top: 8px;">071 718 8015</div>
+    </div>
+
+    <div class="scroll-hint">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ===== WHO WE ARE ===== -->
+<section id="story" style="background: var(--white); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start;">
+
+            <!-- Left: sticky label block -->
+            <div class="fade-up" style="position: sticky; top: 120px;">
+                <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(20,89,192,0.07); letter-spacing: 4px; line-height: 1; margin-bottom: -20px;">01</div>
+                <div class="section-label" style="margin-bottom: 20px; justify-content: flex-start;">
+                    <span style="flex: 0;">Our Story</span>
+                </div>
+                <h2 class="display navy-text" style="font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 24px;">Grounded<br>in Kathu</h2>
+                <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 24px;"></div>
+                <p style="color: #6b7280; font-size: 1rem; line-height: 1.8;">Northern Cape based, delivering sustainable cleaning solutions for mining plants and industrial sectors since 2012.</p>
+
+                <!-- BEE card -->
+                <div style="margin-top: 36px; padding: 28px; background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 20px; border: 1px solid rgba(59,158,255,0.2);">
+                    <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">B-BBEE Status</div>
+                    <div style="font-family: 'Bebas Neue'; font-size: 4rem; color: white; letter-spacing: 3px; line-height: 1;">Level 1</div>
+                    <div style="color: #4ade80; font-weight: 700; font-size: 0.9rem; margin-top: 8px;">100% Black Women Owned</div>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(59,158,255,0.15);">
+                        <div style="color: rgba(255,255,255,0.35); font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;">Registration</div>
+                        <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 4px;">2012/132257/07</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: story paragraphs + values -->
+            <div>
+                <div class="glass-light fade-up stagger-1" style="padding: 40px; margin-bottom: 24px; box-shadow: 0 16px 48px rgba(20,89,192,0.08);">
+                    <div style="width: 48px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 24px;"></div>
+                    <p style="font-size: 1.05rem; line-height: 1.85; color: #374151; margin-bottom: 20px;">
+                        LATIMO is a Northern Cape (Kathu) based cleaning and supplying company which started off in <strong style="color: var(--navy);">2012</strong>, to provide good quality cleaning and supplying services and sustainable cleaning solutions for mining plants and industrial sectors.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.85; color: #374151; margin-bottom: 20px;">
+                        We have over <strong style="color: var(--navy);">6 years of experience</strong> in the industrial cleaning and supplying services to a wide range of clients, we pride ourselves to provide only high quality services.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.85; color: #374151; margin-bottom: 20px;">
+                        Quality of service and the commitment of the director and staff members have ensured that our <strong style="color: var(--navy);">customer retention rate is among the highest</strong> in the cleaning industry.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.85; color: #374151;">
+                        We continuously strive for <strong style="color: var(--blue);">Zero Harm</strong> to our people and our environment and are committed to improving the quality of life of people and communities in and around our operations.
+                    </p>
+                </div>
+
+                <!-- Values grid -->
+                <div class="fade-up stagger-2" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">🔍</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Transparency</div>
+                    </div>
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">⚡</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Commitment</div>
+                    </div>
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">✅</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Quality</div>
+                    </div>
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">🛡️</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Integrity</div>
+                    </div>
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">📋</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Honesty</div>
+                    </div>
+                    <div class="value-card">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">🎯</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Accountability</div>
+                    </div>
+                    <div class="value-card" style="grid-column: span 2;">
+                        <div style="font-size: 1.8rem; margin-bottom: 12px;">⭐</div>
+                        <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy);">Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VISION & MISSION ===== -->
+<section style="background: linear-gradient(180deg, #eaf2ff, #f4f9ff); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
+            <div class="section-label" style="justify-content: center; margin-bottom: 16px;">Our Driving Force</div>
+            <h2 class="display navy-text" style="font-size: clamp(3rem,6vw,6rem);">Vision & Approach</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+            <!-- Vision -->
+            <div class="fade-up stagger-1 glass-light" style="padding: 48px; box-shadow: 0 24px 64px rgba(20,89,192,0.1); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,158,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px;">Vision Statement</div>
+                <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 28px;"></div>
+                <blockquote style="font-size: 1.35rem; font-style: italic; color: var(--navy); line-height: 1.6; font-weight: 400; border-left: 3px solid var(--sky); padding-left: 24px;">
+                    "To be the cleaning and supplying contractor of choice in our chosen operating areas for clients."
+                </blockquote>
+                <div style="margin-top: 32px; padding: 20px; background: rgba(20,89,192,0.06); border-radius: 14px; border: 1px solid rgba(20,89,192,0.12);">
+                    <div style="color: var(--blue); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Team Philosophy</div>
+                    <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.6; font-style: italic;">"Value of a team is greater than the sum of individual members — our strength is in our skills and diversity."</p>
+                </div>
+            </div>
+
+            <!-- Approach -->
+            <div class="fade-up stagger-2" style="background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 24px; padding: 48px; border: 1px solid rgba(59,158,255,0.2); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(59,158,255,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+                <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px;">Our Approach</div>
+                <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--sky), #60c0ff); border-radius: 2px; margin-bottom: 32px;"></div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="approach-item">
+                        <div class="approach-num">01</div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6;">Provide clients with the highest quality cleaning services — safe, professional, considerate and harmonious.</p>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-num">02</div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6;">Satisfy the needs of our clients by only supplying top quality materials at all times.</p>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-num">03</div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6;">Provide a safe and secure working environment and monitor health and safety of all employees.</p>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-num">04</div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6;">Carry out all activities in a sustainable and environmentally conscientious manner.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS BANNER ===== -->
+<section style="background: var(--navy); padding: 100px 0; position: relative; overflow: hidden;">
+    <div class="grid-lines" style="position: absolute; inset: 0; opacity: 0.5;"></div>
+    <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(20,89,192,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
+
+    <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(59,158,255,0.15); border-radius: 24px; overflow: hidden;" class="fade-up">
+            <div class="stat-block" style="border-right: 1px solid rgba(59,158,255,0.15);">
+                <div class="stat-num">98%</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 8px;">Customer Retention</div>
+            </div>
+            <div class="stat-block" style="border-right: 1px solid rgba(59,158,255,0.15);">
+                <div class="stat-num">6+</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 8px;">Years Experience</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">Zero</div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 8px;">Harm Commitment</div>
+            </div>
+        </div>
+        <!-- Quote -->
+        <div class="fade-up stagger-2" style="margin-top: 56px; padding: 40px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(59,158,255,0.12); text-align: center;">
+            <div style="color: var(--sky); font-size: 3rem; line-height: 1; margin-bottom: 16px; opacity: 0.4;">"</div>
+            <p style="color: rgba(201,228,255,0.7); font-size: 1.15rem; font-style: italic; font-weight: 300; max-width: 700px; margin: 0 auto; line-height: 1.8;">
+                We continuously strive for Zero Harm to our people and our environment — committed to improving the quality of life of communities in and around our operations.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LEADERSHIP & CONTACT ===== -->
+<section id="leadership" style="background: var(--white); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
+            <div class="section-label" style="justify-content: center; margin-bottom: 16px;">The People Behind LATIMO</div>
+            <h2 class="display navy-text" style="font-size: clamp(3rem,6vw,6rem);">Leadership &<br>Contact</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start;">
+            <!-- Director card -->
+            <div class="fade-up stagger-1">
+                <div style="position: relative;">
+                    <div style="background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 32px; padding: 4px; box-shadow: 0 32px 64px rgba(4,20,46,0.3); transform: rotate(2deg); transition: transform 0.5s;" onmouseover="this.style.transform='rotate(0deg)'" onmouseout="this.style.transform='rotate(2deg)'">
+                        <div style="background: linear-gradient(135deg, #f0f7ff, white); border-radius: 28px; padding: 56px 40px; text-align: center;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--blue), var(--sky)); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 2.5rem; color: white; letter-spacing: 2px; box-shadow: 0 8px 32px rgba(20,89,192,0.4);">FS</div>
+                            <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--sky); margin-bottom: 8px;">Director</div>
+                            <div style="font-family: 'Bebas Neue'; font-size: 2.5rem; color: var(--navy); letter-spacing: 2px; line-height: 1;">Fatima Stevens</div>
+                            <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(20,89,192,0.1);">
+                                <a href="tel:0717188015" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 14px 24px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-decoration: none; margin-bottom: 12px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(59,158,255,0.5)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">📞 071 718 8015</a>
+                                <a href="mailto:Latimofs@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(20,89,192,0.08); color: var(--blue); padding: 14px 24px; border-radius: 50px; font-weight: 600; font-size: 0.82rem; text-decoration: none; border: 1px solid rgba(20,89,192,0.2); transition: background 0.2s;" onmouseover="this.style.background='rgba(20,89,192,0.14)'" onmouseout="this.style.background='rgba(20,89,192,0.08)'">✉️ Latimofs@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Reg badge -->
+                    <div style="position: absolute; bottom: -20px; right: -20px; background: var(--navy); color: white; padding: 16px 20px; border-radius: 16px; font-size: 0.72rem; box-shadow: 0 8px 32px rgba(4,20,46,0.5); border: 1px solid rgba(59,158,255,0.2);">
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;">Reg</div>
+                        <div style="color: var(--sky); font-weight: 600;">2012/132257/07</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact details -->
+            <div class="fade-up stagger-2">
+                <h3 class="display navy-text" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 40px;">Get In Touch</h3>
+
+                <div style="display: flex; flex-direction: column;">
+                    <div class="contact-detail">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <div style="color: rgba(4,20,46,0.4); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Registered Office</div>
+                            <div style="color: var(--navy); font-size: 1.05rem; font-weight: 600;">4922 Dahlia Street</div>
+                            <div style="color: #6b7280; font-size: 0.9rem;">Kathu 8446, Northern Cape</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <div style="color: rgba(4,20,46,0.4); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Phone</div>
+                            <a href="tel:0717188015" style="color: var(--blue); font-size: 1.3rem; font-weight: 700; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='var(--blue)'">071 718 8015</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <div style="color: rgba(4,20,46,0.4); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Email</div>
+                            <a href="mailto:Latimofs@gmail.com" style="color: var(--blue); font-size: 1rem; font-weight: 600; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='var(--blue)'">Latimofs@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">🏢</div>
+                        <div>
+                            <div style="color: rgba(4,20,46,0.4); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Registration Details</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px;">
+                                <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;">Reg: 2012/132257/07</span>
+                                <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;">VAT: 4190264970</span>
+                                <span style="background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); color: #16a34a; padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;">Level 1 B-BBEE ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA block -->
+                <div style="margin-top: 40px; padding: 32px; background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 20px; border: 1px solid rgba(59,158,255,0.2); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+                    <div>
+                        <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 6px;">Ready to Work Together?</div>
+                        <div style="color: white; font-size: 1.05rem; font-weight: 300;">We reply fast — usually within hours.</div>
+                    </div>
+                    <a href="mailto:Latimofs@gmail.com"
+                       style="background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 24px rgba(59,158,255,0.3);"
+                       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 32px rgba(59,158,255,0.5)'"
+                       onmouseout="this.style.transform=''; this.style.boxShadow='0 0 24px rgba(59,158,255,0.3)'">
+                        Email Us →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="padding: 48px 0; background: var(--navy); border-top: 1px solid rgba(59,158,255,0.15);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+            <div>
+                <a href="latimo.html" class="nav-logo" style="display: block; margin-bottom: 8px;">LATI<span>MO</span></a>
+                <div style="color: rgba(255,255,255,0.35); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Cleaning & Supplies • Kathu, Northern Cape</div>
+            </div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <a href="latimo.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
+                <a href="#story" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Story</a>
+                <a href="#leadership" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Leadership</a>
+                <a href="latimo.html#contact" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+            </div>
+        </div>
+        <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(59,158,255,0.4), transparent); margin: 32px 0;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div style="color: rgba(255,255,255,0.25); font-size: 0.78rem;">© 2025 LATIMO (Pty) Ltd — Reg 2012/132257/07</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.25); font-size: 0.78rem;">
+                <span style="color: #4ade80;">●</span> Level 1 B-BBEE &nbsp;|&nbsp;
+                <span style="color: var(--sky);">●</span> Zero Harm Policy
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="tel:0717188015" class="float-cta">📞 Call Now</a>
+
+<!-- BWO badge -->
+<div style="position: fixed; bottom: 28px; left: 28px; z-index: 90; background: var(--navy2); border: 1px solid rgba(59,158,255,0.3); color: rgba(255,255,255,0.7); padding: 10px 18px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(4,20,46,0.4);">
+    <span style="width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: pulse 1.8s infinite;"></span>
+    100% BWO • Level 1
+</div>
+
+<script>
+    // intersection observer (original)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // hamburger toggle (added)
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeHamburger = document.getElementById('closeHamburger');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('active');
+    }
+
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    closeHamburger.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>
