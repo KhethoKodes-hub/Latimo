@@ -246,7 +246,7 @@
         .stagger-5 { transition-delay: 0.5s; }
         .stagger-6 { transition-delay: 0.6s; }
 
-        /* ===== HAMBURGER & MOBILE RESPONSIVE (added, preserving original) ===== */
+        /* ===== HAMBURGER & MOBILE RESPONSIVE ===== */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -323,7 +323,7 @@
             .nav-cta { display: none; }
         }
 
-        /* responsive sections (stacking, sizing) */
+        /* responsive sections */
         @media (max-width: 1024px) {
             .glass[style*="top: 110px; right: 48px;"] { top: 100px; right: 24px; padding: 16px 20px; }
             .glass[style*="top: 110px; right: 48px;"] div[style*="font-size: 3.5rem"] { font-size: 2.5rem !important; }
@@ -371,7 +371,7 @@
 </head>
 <body>
 
-<!-- mobile overlay menu (added) -->
+<!-- mobile overlay menu -->
 <div class="mobile-menu" id="mobileMenu">
     <span class="close-hamburger" id="closeHamburger">&times;</span>
     <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -383,7 +383,7 @@
 
 <!-- NAV -->
 <nav>
-    <a href="index.html" class="nav-logo">LATI<span>MO</span></a>
+    <div class="nav-logo"><img src="assets/logotransp.png" style="height: 110px; margin-right: 8px;" alt="Latimo Logo"></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -391,7 +391,6 @@
         <a href="contact.html">Contact</a>
     </div>
     <a href="mailto:Latimofs@gmail.com" class="nav-cta">Get a Quote</a>
-    <!-- hamburger button -->
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -401,49 +400,47 @@
 
 <!-- ===== HERO ===== -->
 <section style="position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;" class="noise">
-    <div style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat; filter: brightness(0.22) saturate(1.4); transform: scale(1.05); animation: slowZoom 22s ease-in-out infinite alternate;"></div>
-    <div style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(4,20,46,0.98) 0%, rgba(7,30,69,0.88) 40%, rgba(20,89,192,0.4) 78%, transparent 100%);"></div>
+    <div style="position: absolute; inset: 0; background: url('./assets/sign2.png') center/cover no-repeat; filter: brightness(0.22) saturate(1.4); transform: scale(1.05); animation: slowZoom 22s ease-in-out infinite alternate;"></div>
+    <div style="position: absolute; inset: 0; "></div>
     <div class="grid-lines" style="position: absolute; inset: 0;"></div>
 
-    <!-- Breadcrumb -->
     <div style="position: absolute; top: 110px; left: 48px; z-index: 10; display: flex; align-items: center; gap: 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4);">
         <a href="index.html" style="color: rgba(59,158,255,0.7); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(59,158,255,0.7)'">Home</a>
         <span style="color: rgba(255,255,255,0.2);">/</span>
         <span style="color: white;">Services</span>
     </div>
 
-    <!-- Service count badge -->
     <div class="glass" style="position: absolute; top: 110px; right: 48px; z-index: 10; padding: 20px 28px; text-align: center;">
-        <div style="color: var(--sky); font-family: 'Bebas Neue'; font-size: 3.5rem; letter-spacing: 3px; line-height: 1;">9+</div>
+        <div style="color: var(--sky); font-family: 'Bebas Neue'; font-size: 3.5rem; letter-spacing: 3px; line-height: 1;">11+</div>
         <div style="color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Services Offered</div>
         <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.65rem; letter-spacing: 1px;">No job too big or small</div>
     </div>
 
     <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%;">
-        <div style="margin-bottom: 28px;" class="fade-up">
-            <span class="pill pill-blue"><span class="dot-pulse"></span> Industrial Cleaning • Safety Signs • PPE</span>
-        </div>
+        <!--<div style="margin-bottom: 28px;" class="fade-up">
+            <span class="pill pill-blue"><span class="dot-pulse"></span> Industrial Cleaning • Safety Signs • PPE • Building Maintenance • Carpentry</span>
+        </div>-->
 
         <h1 class="fade-up stagger-1" style="font-size: clamp(5rem, 12vw, 12rem);">
-            <span class="display" style="color: rgba(255,255,255,0.18); display: block; font-size: 0.35em; letter-spacing: 6px; margin-bottom: 8px;">What We Offer</span>
-            <span class="display gradient-text">Our</span><br>
+            <!--<span class="display" style="color: rgba(255,255,255,0.18); display: block; font-size: 0.35em; letter-spacing: 6px; margin-bottom: 8px;">What We Offer</span>-->
+            <span class="display gradient-text">Our</span>
             <span class="display" style="color: rgba(255,255,255,0.9);">Services</span>
         </h1>
 
         <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.8); font-size: 1.15rem; font-weight: 300; max-width: 560px; margin-top: 24px; line-height: 1.75;">
-            From plant cleaning to weigh bridge management — LATIMO provides top quality cleaning and supply services to ensure that client needs are met at all times.
+            From plant cleaning to building maintenance and custom carpentry — LATIMO provides top quality cleaning, supply, and maintenance services to ensure that client needs are met at all times.
         </p>
 
-        <!-- Hero quick-nav pills -->
         <div class="fade-up stagger-3" style="display: flex; gap: 12px; margin-top: 44px; flex-wrap: wrap;">
             <a href="#cleaning" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">🧼 Cleaning</a>
             <a href="#supplies" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">🛡️ Supplies</a>
             <a href="#safety" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">🚧 Safety Signs</a>
             <a href="#weighbridge" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">⚖️ Weigh Bridge</a>
+            <a href="#building" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">🏢 Maintenance</a>
+            <a href="#carpentry" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: white; padding: 10px 22px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: background 0.3s, border-color 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'; this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.18)'">🪚 Carpentry</a>
         </div>
     </div>
 
-    <!-- Floating director contact -->
     <div class="glass-dark float-anim" style="position: absolute; bottom: 48px; right: 48px; z-index: 10; padding: 24px 28px; border-left: 3px solid var(--sky);">
         <div style="color: rgba(255,255,255,0.4); font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;">Director</div>
         <div style="color: white; font-size: 1.2rem; font-weight: 700; margin-top: 4px;">Fatima Stevens</div>
@@ -456,96 +453,38 @@
     </div>
 </section>
 
-<!-- ===== CLEANING SERVICES ===== -->
+<!-- ===== CLEANING SERVICES (Service 1) ===== -->
 <section id="cleaning" style="background: var(--white); padding: 120px 0;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
-
         <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
-            <!-- Left sticky label -->
             <div class="fade-up" style="position: sticky; top: 120px;">
                 <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(20,89,192,0.07); letter-spacing: 4px; line-height: 1; margin-bottom: -20px;">01</div>
                 <div class="section-label" style="margin-bottom: 20px; justify-content: flex-start;"><span style="flex: 0;">Cleaning</span></div>
                 <h2 class="display navy-text" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 20px;">Industrial &<br>Plant Cleaning</h2>
                 <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 20px;"></div>
-                <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.8;">LATIMO provides the following top quality cleaning services — not limited to. We ensure that the cleaning requirements of our clients are met at all times.</p>
+                <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.8;">LATIMO provides top quality cleaning services — not limited to. We ensure that the cleaning requirements of our clients are met at all times.</p>
                 <div style="margin-top: 28px; padding: 20px 24px; background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 16px; border: 1px solid rgba(59,158,255,0.2);">
                     <div style="color: var(--sky); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Our Promise</div>
                     <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; font-style: italic;">"No job is too big or too small for LATIMO."</p>
                 </div>
             </div>
 
-            <!-- Right: cards grid -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="service-card fade-up stagger-1">
-                    <div class="service-icon">🏭</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Plant Cleaning</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Mining plants and industrial processing facilities — safe, thorough, compliant.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-2">
-                    <div class="service-icon">🚧</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Mining Road Safety Signs</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Supply, installation, and maintenance of regulation road signage.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-3">
-                    <div class="service-icon">🚿</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Change House Cleaning</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Ablution and locker areas cleaned to the highest hygienic standard.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-4">
-                    <div class="service-icon">🏢</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Site Offices & Buildings</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Full interior and exterior cleaning of on-site buildings and offices.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-1">
-                    <div class="service-icon">⛟</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">CAT & Komatsu Equipment</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Specialist cleaning of heavy mining mobile equipment and trucks.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-2">
-                    <div class="service-icon">🚐</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Light Duty Vehicles (LDV)</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Bakkies and light trucks cleaned inside and out.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-3">
-                    <div class="service-icon">🌿</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Grass & Weed Management</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Vegetation clearing for mining and construction sites.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-up stagger-4">
-                    <div class="service-icon">🧺</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Industrial Laundry</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Workwear, textiles, and overalls laundered industrially.</p>
-                    </div>
-                </div>
-                <!-- Last card spans full width -->
-                <div class="service-card fade-up stagger-1" style="grid-column: span 2;">
-                    <div class="service-icon">🛋️</div>
-                    <div>
-                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Carpet & Upholstery Cleaning</h3>
-                        <p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Deep cleaning of carpets, upholstery, and soft furnishings for corporate environments and site offices.</p>
-                    </div>
-                </div>
+                <div class="service-card fade-up stagger-1"><div class="service-icon">🏭</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Plant Cleaning</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Mining plants and industrial processing facilities — safe, thorough, compliant.</p></div></div>
+                <div class="service-card fade-up stagger-2"><div class="service-icon">🚧</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Mining Road Safety Signs</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Supply, installation, and maintenance of regulation road signage.</p></div></div>
+                <div class="service-card fade-up stagger-3"><div class="service-icon">🚿</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Change House Cleaning</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Ablution and locker areas cleaned to the highest hygienic standard.</p></div></div>
+                <div class="service-card fade-up stagger-4"><div class="service-icon">🏢</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Site Offices & Buildings</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Full interior and exterior cleaning of on-site buildings and offices.</p></div></div>
+                <div class="service-card fade-up stagger-1"><div class="service-icon">⛟</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">CAT & Komatsu Equipment</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Specialist cleaning of heavy mining mobile equipment and trucks.</p></div></div>
+                <div class="service-card fade-up stagger-2"><div class="service-icon">🚐</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Light Duty Vehicles (LDV)</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Bakkies and light trucks cleaned inside and out.</p></div></div>
+                <div class="service-card fade-up stagger-3"><div class="service-icon">🌿</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Grass & Weed Management</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Vegetation clearing for mining and construction sites.</p></div></div>
+                <div class="service-card fade-up stagger-4"><div class="service-icon">🧺</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Industrial Laundry</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Workwear, textiles, and overalls laundered industrially.</p></div></div>
+                <div class="service-card fade-up stagger-1" style="grid-column: span 2;"><div class="service-icon">🛋️</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Carpet & Upholstery Cleaning</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Deep cleaning of carpets, upholstery, and soft furnishings for corporate environments.</p></div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== SUPPLIES SECTION ===== -->
+<!-- ===== SUPPLIES SECTION (Service 2) ===== -->
 <section id="supplies" style="background: var(--navy); padding: 120px 0; position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20,89,192,0.15) 0%, transparent 60%);"></div>
     <div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,158,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -555,155 +494,130 @@
         <div style="text-align: center; margin-bottom: 80px;" class="fade-up">
             <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(59,158,255,0.05); letter-spacing: 4px; line-height: 1; margin-bottom: -40px;">02</div>
             <div class="section-label" style="justify-content: center; margin-bottom: 20px;">Supply Division</div>
-            <h2 class="display" style="font-size: clamp(3rem,6vw,6rem); color: white; line-height: 0.95; margin-bottom: 20px;">
-                Mining Materials<br><span class="accent-text">& Equipment</span>
-            </h2>
+            <h2 class="display" style="font-size: clamp(3rem,6vw,6rem); color: white; line-height: 0.95; margin-bottom: 20px;">Mining Materials<br><span class="accent-text">& Equipment</span></h2>
             <p style="color: rgba(201,228,255,0.6); font-size: 1.05rem; max-width: 560px; margin: 0 auto; line-height: 1.75;">LATIMO supplies a wide range of mining materials and equipment, ensuring that the needs and expectations of clients are met at all times.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 56px;">
-            <div class="supply-card fade-up stagger-1">
-                <div class="supply-card-icon">🛡️</div>
-                <h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">PPE</h3>
-                <p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Full range of personal protective clothing and safety gear for all roles.</p>
-            </div>
-            <div class="supply-card fade-up stagger-2">
-                <div class="supply-card-icon">🧪</div>
-                <h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Industrial Chemicals</h3>
-                <p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Specialised industrial cleaning chemicals and detergent solutions.</p>
-            </div>
-            <div class="supply-card fade-up stagger-3">
-                <div class="supply-card-icon">🚸</div>
-                <h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Road Safety Signs</h3>
-                <p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Supply, custom fabrication, and professional on-site installation.</p>
-            </div>
-            <div class="supply-card fade-up stagger-4">
-                <div class="supply-card-icon">⚖️</div>
-                <h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Weigh Bridge</h3>
-                <p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Full operational and administrative weighbridge management services.</p>
-            </div>
+            <div class="supply-card fade-up stagger-1"><div class="supply-card-icon">🛡️</div><h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">PPE</h3><p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Full range of personal protective clothing and safety gear.</p></div>
+            <div class="supply-card fade-up stagger-2"><div class="supply-card-icon">🧪</div><h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Industrial Chemicals</h3><p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Specialised industrial cleaning chemicals and detergent solutions.</p></div>
+            <div class="supply-card fade-up stagger-3"><div class="supply-card-icon">🚸</div><h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Road Safety Signs</h3><p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Supply, custom fabrication, and professional on-site installation.</p></div>
+            <div class="supply-card fade-up stagger-4"><div class="supply-card-icon">⚖️</div><h3 style="color: white; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px;">Weigh Bridge</h3><p style="color: rgba(201,228,255,0.55); font-size: 0.85rem; line-height: 1.7;">Full operational and administrative weighbridge management.</p></div>
         </div>
 
-        <!-- Quote block -->
         <div class="fade-up stagger-2" style="padding: 40px 48px; background: rgba(255,255,255,0.04); border-radius: 20px; border: 1px solid rgba(59,158,255,0.15); text-align: center;">
             <div style="color: var(--sky); font-size: 3rem; line-height: 1; opacity: 0.3; margin-bottom: 12px;">"</div>
-            <p style="color: rgba(201,228,255,0.7); font-size: 1.1rem; font-style: italic; font-weight: 300; max-width: 680px; margin: 0 auto; line-height: 1.8;">LATIMO supply the following mining materials, equipment and services — PPE, Industrial Cleaning Chemicals, Road Safety Signs and Installation, Weigh Bridge Management Services.</p>
-            <div style="margin-top: 20px; color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">LATIMO Company Profile</div>
+            <p style="color: rgba(201,228,255,0.7); font-size: 1.1rem; font-style: italic; font-weight: 300; max-width: 680px; margin: 0 auto; line-height: 1.8;">PPE, Industrial Cleaning Chemicals, Road Safety Signs and Installation, Weigh Bridge Management Services.</p>
+            <div style="margin-top: 20px; color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">LATIMO Supply Profile</div>
         </div>
     </div>
 </section>
 
-<!-- ===== SAFETY SIGNS HERO ===== -->
+<!-- ===== SAFETY SIGNS HERO (Service 3) ===== -->
 <section id="safety" style="position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden;" class="noise">
     <div style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat; filter: brightness(0.22) saturate(1.5);"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(4,20,46,0.97) 0%, rgba(7,30,69,0.85) 45%, rgba(20,89,192,0.35) 80%, transparent 100%);"></div>
     <div class="grid-lines" style="position: absolute; inset: 0;"></div>
 
     <div style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center;">
-        <!-- Left: big text -->
         <div class="fade-up">
             <span class="pill pill-blue" style="margin-bottom: 28px; display: inline-flex;"><span class="dot-pulse"></span> 24/7 Installation</span>
-            <h2 class="display" style="font-size: clamp(4rem, 8vw, 8rem); color: white; line-height: 0.9; margin-bottom: 24px;">
-                Road Safety<br><span class="accent-text">Signage</span><br>
-                <span style="color: rgba(255,255,255,0.2);">That Lasts</span>
-            </h2>
-            <p style="color: rgba(201,228,255,0.75); font-size: 1.05rem; font-weight: 300; line-height: 1.75; max-width: 460px;">
-                Mining road safety signs, custom fabrication, professional installation, and ongoing maintenance — covering the entire Northern Cape.
-            </p>
+            <h2 class="display" style="font-size: clamp(4rem, 8vw, 8rem); color: white; line-height: 0.9; margin-bottom: 24px;">Road Safety<br><span class="accent-text">Signage</span><br><span style="color: rgba(255,255,255,0.2);">That Lasts</span></h2>
+            <p style="color: rgba(201,228,255,0.75); font-size: 1.05rem; font-weight: 300; line-height: 1.75; max-width: 460px;">Mining road safety signs, custom fabrication, professional installation, and ongoing maintenance — covering the entire Northern Cape.</p>
             <div style="display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap;">
-                <div class="glass" style="padding: 18px 22px;">
-                    <div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Coverage</div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Northern Cape Wide</div>
-                </div>
-                <div class="glass" style="padding: 18px 22px;">
-                    <div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Industry</div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Mining & Construction</div>
-                </div>
-                <div class="glass" style="padding: 18px 22px;">
-                    <div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Service</div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Supply & Install</div>
-                </div>
+                <div class="glass" style="padding: 18px 22px;"><div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Coverage</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Northern Cape Wide</div></div>
+                <div class="glass" style="padding: 18px 22px;"><div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Industry</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Mining & Construction</div></div>
+                <div class="glass" style="padding: 18px 22px;"><div style="color: var(--sky); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;">Service</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Supply & Install</div></div>
             </div>
         </div>
-
-        <!-- Right: feature highlights -->
         <div class="fade-up stagger-2" style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="highlight-strip">
-                <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">🚧</div>
-                <div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Custom Sign Fabrication</div>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 3px;">Bespoke mining signage to spec</div>
-                </div>
-            </div>
-            <div class="highlight-strip">
-                <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">🔧</div>
-                <div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Professional Installation</div>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 3px;">Trained on-site installation teams</div>
-                </div>
-            </div>
-            <div class="highlight-strip">
-                <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">🛣️</div>
-                <div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Ongoing Maintenance</div>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 3px;">Regular inspection and replacement</div>
-                </div>
-            </div>
-            <div class="highlight-strip">
-                <div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">✅</div>
-                <div>
-                    <div style="color: white; font-weight: 600; font-size: 0.9rem;">Compliance Ready</div>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 3px;">SANS-aligned signage solutions</div>
-                </div>
-            </div>
+            <div class="highlight-strip"><div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🚧</div><div><div style="color: white; font-weight: 600;">Custom Sign Fabrication</div><div style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">Bespoke mining signage to spec</div></div></div>
+            <div class="highlight-strip"><div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🔧</div><div><div style="color: white; font-weight: 600;">Professional Installation</div><div style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">Trained on-site installation teams</div></div></div>
+            <div class="highlight-strip"><div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🛣️</div><div><div style="color: white; font-weight: 600;">Ongoing Maintenance</div><div style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">Regular inspection and replacement</div></div></div>
+            <div class="highlight-strip"><div style="width: 44px; height: 44px; background: rgba(59,158,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">✅</div><div><div style="color: white; font-weight: 600;">Compliance Ready</div><div style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">SANS-aligned signage solutions</div></div></div>
         </div>
     </div>
 </section>
 
-<!-- ===== WEIGH BRIDGE SECTION ===== -->
+<!-- ===== WEIGH BRIDGE SECTION (Service 4 - originally 3, now renumbered) ===== -->
 <section id="weighbridge" style="background: linear-gradient(180deg, #eaf2ff, #f4f9ff); padding: 120px 0;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-            <!-- Left: content -->
             <div class="fade-up">
                 <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(20,89,192,0.07); letter-spacing: 4px; line-height: 1; margin-bottom: -20px;">03</div>
                 <div class="section-label" style="margin-bottom: 20px; justify-content: flex-start;"><span style="flex: 0;">Specialist</span></div>
                 <h2 class="display navy-text" style="font-size: clamp(2.5rem, 4vw, 5rem); margin-bottom: 20px;">Weigh Bridge<br>Management</h2>
                 <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 24px;"></div>
-                <p style="color: #4b5563; font-size: 1.05rem; line-height: 1.8; margin-bottom: 28px;">
-                    LATIMO provides full weigh bridge management services — accurate data capture, regulatory compliance, and efficient traffic flow management for mining operations across the Northern Cape.
-                </p>
+                <p style="color: #4b5563; font-size: 1.05rem; line-height: 1.8; margin-bottom: 28px;">LATIMO provides full weigh bridge management services — accurate data capture, regulatory compliance, and efficient traffic flow management for mining operations across the Northern Cape.</p>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">Data Capture</span>
-                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">Maintenance</span>
-                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">24/7 Operation</span>
-                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">Reporting</span>
+                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;">Data Capture</span>
+                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;">Maintenance</span>
+                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;">24/7 Operation</span>
+                    <span style="background: rgba(20,89,192,0.08); border: 1px solid rgba(20,89,192,0.2); color: var(--blue); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;">Reporting</span>
+                </div>
+            </div>
+            <div class="fade-up stagger-2">
+                <div style="background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 28px; padding: 48px; border: 1px solid rgba(59,158,255,0.2); margin-bottom: 20px;">
+                    <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px;">Also Included</div>
+                    <h3 style="color: white; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 2px; margin-bottom: 20px;">PPE & Industrial Chemicals</h3>
+                    <p style="color: rgba(201,228,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 24px;">We supply top-grade industrial cleaning chemicals and a full range of personal protective equipment — ensuring safety and compliance at every operational level.</p>
+                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 14px;"><div style="color: var(--sky); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Retention</div><p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; font-style: italic;">"Customer retention rate among the highest in the industry — quality and commitment."</p></div>
+                </div>
+                <div style="padding: 24px; background: white; border-radius: 20px; border: 1px solid rgba(20,89,192,0.1); display: flex; gap: 16px; align-items: center;"><div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue), var(--sky)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">🛡️</div><div><div style="color: var(--navy); font-weight: 700;">Zero Harm Commitment</div><div style="color: #6b7280; font-size: 0.85rem;">All services delivered with full health, safety, and environmental compliance.</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== NEW SERVICE 4: BUILDING MAINTENANCE (Painting, Tiling, etc) ===== -->
+<section id="building" style="background: white; padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
+            <div class="fade-up" style="position: sticky; top: 120px;">
+                <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(20,89,192,0.07); letter-spacing: 4px; line-height: 1; margin-bottom: -20px;">04</div>
+                <div class="section-label" style="margin-bottom: 20px; justify-content: flex-start;"><span style="flex: 0;">Maintenance</span></div>
+                <h2 class="display navy-text" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 20px;">Building<br>Maintenance</h2>
+                <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 20px;"></div>
+                <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.8;">Complete building maintenance services — from painting and tiling to full refurbishment. We keep your facilities in pristine condition.</p>
+                <div style="margin-top: 28px; padding: 20px 24px; background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 16px; border: 1px solid rgba(59,158,255,0.2);">
+                    <div style="color: var(--sky); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Reliability</div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; font-style: italic;">"We maintain your assets so you can focus on your core business."</p>
                 </div>
             </div>
 
-            <!-- Right: PPE + Chemicals highlight card -->
-            <div class="fade-up stagger-2">
-                <div style="background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 28px; padding: 48px; border: 1px solid rgba(59,158,255,0.2); position: relative; overflow: hidden; margin-bottom: 20px;">
-                    <div style="position: absolute; top: -40px; right: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(59,158,255,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
-                    <div style="color: var(--sky); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px;">Also Included</div>
-                    <h3 style="color: white; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 2px; margin-bottom: 20px;">PPE & Industrial Chemicals</h3>
-                    <p style="color: rgba(201,228,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 24px;">
-                        We supply top-grade industrial cleaning chemicals and a full range of personal protective equipment — ensuring safety and compliance at every operational level.
-                    </p>
-                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 14px; border: 1px solid rgba(59,158,255,0.15);">
-                        <div style="color: var(--sky); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Retention</div>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; font-style: italic; line-height: 1.6;">"Customer retention rate among the highest in the industry — quality and commitment."</p>
-                    </div>
-                </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="service-card fade-up stagger-1"><div class="service-icon">🎨</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Painting & Decorating</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Interior & exterior painting, protective coatings, surface preparation, and decorative finishes for commercial spaces.</p></div></div>
+                <div class="service-card fade-up stagger-2"><div class="service-icon">🧱</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Tiling & Flooring</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Ceramic, porcelain, vinyl tile installation, floor repairs, grouting, and resurfacing for heavy-traffic areas.</p></div></div>
+                <div class="service-card fade-up stagger-3"><div class="service-icon">🔧</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">General Repairs & Refurbishment</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Plastering, ceiling fixes, door adjustments, and complete refurbishment of site offices and facilities.</p></div></div>
+                <div class="service-card fade-up stagger-4"><div class="service-icon">🪟</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Glazing & Window Repairs</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Window frame repairs, glass replacement, and sealing for energy efficiency.</p></div></div>
+                <div class="service-card fade-up stagger-1" style="grid-column: span 2;"><div class="service-icon">🏗️</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Complete Refurbishment</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Full-scale building refurbishment, office renovations, and facility upgrades tailored to client specifications.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <!-- Zero harm strip -->
-                <div style="padding: 24px; background: white; border-radius: 20px; border: 1px solid rgba(20,89,192,0.1); display: flex; gap: 16px; align-items: center; box-shadow: 0 8px 32px rgba(20,89,192,0.08);">
-                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue), var(--sky)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">🛡️</div>
-                    <div>
-                        <div style="color: var(--navy); font-weight: 700; font-size: 0.95rem;">Zero Harm Commitment</div>
-                        <div style="color: #6b7280; font-size: 0.85rem; margin-top: 4px; line-height: 1.5;">All services delivered with full health, safety, and environmental compliance.</div>
-                    </div>
+<!-- ===== NEW SERVICE 5: CARPENTRY & MILLWORK (Building Cupboards, etc) ===== -->
+<section id="carpentry" style="background: linear-gradient(180deg, #eaf2ff, #f4f9ff); padding: 120px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
+            <div class="fade-up" style="position: sticky; top: 120px;">
+                <div style="font-family: 'Bebas Neue'; font-size: 8rem; color: rgba(20,89,192,0.07); letter-spacing: 4px; line-height: 1; margin-bottom: -20px;">05</div>
+                <div class="section-label" style="margin-bottom: 20px; justify-content: flex-start;"><span style="flex: 0;">Carpentry</span></div>
+                <h2 class="display navy-text" style="font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 20px;">Carpentry &<br>Millwork</h2>
+                <div style="width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 2px; margin-bottom: 20px;"></div>
+                <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.8;">Custom carpentry solutions — from building cupboards and cabinets to complete joinery and furniture making.</p>
+                <div style="margin-top: 28px; padding: 20px 24px; background: linear-gradient(135deg, var(--navy2), #0a2855); border-radius: 16px; border: 1px solid rgba(59,158,255,0.2);">
+                    <div style="color: var(--sky); font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Craftsmanship</div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; font-style: italic;">"Quality woodwork that stands the test of time."</p>
                 </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="service-card fade-up stagger-1"><div class="service-icon">🚪</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Building Cupboards & Cabinets</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Custom-built cupboards, kitchen cabinets, storage units, and office shelving — designed for durability and space efficiency.</p></div></div>
+                <div class="service-card fade-up stagger-2"><div class="service-icon">🪑</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Custom Furniture & Joinery</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Custom furniture making, door and window frames, skirting boards, and professional joinery for industrial & residential projects.</p></div></div>
+                <div class="service-card fade-up stagger-3"><div class="service-icon">🔨</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Repairs & Restorations</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Timber repairs, wardrobe overhauls, drawer fixes, and complete restoration of existing wooden structures and fixtures.</p></div></div>
+                <div class="service-card fade-up stagger-4"><div class="service-icon">📦</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Office & Industrial Shelving</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">Heavy-duty shelving, racking systems, and custom storage solutions for warehouses and offices.</p></div></div>
+                <div class="service-card fade-up stagger-1" style="grid-column: span 2;"><div class="service-icon">🏠</div><div><h3 style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Complete Woodworking Solutions</h3><p style="color: #6b7280; font-size: 0.85rem; line-height: 1.65;">End-to-end woodworking services — from design concept to final installation for any carpentry need.</p></div></div>
             </div>
         </div>
     </div>
@@ -714,35 +628,14 @@
     <div class="grid-lines" style="position: absolute; inset: 0; opacity: 0.5;"></div>
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 5;">
         <div class="fade-up" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0; border: 1px solid rgba(59,158,255,0.15); border-radius: 20px; overflow: hidden;">
-            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''">
-                <div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Quality</div>
-                <div style="color: white; font-weight: 700; font-size: 0.95rem;">Highest Service Standards</div>
-            </div>
-            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''">
-                <div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Retention</div>
-                <div style="color: white; font-weight: 700; font-size: 0.95rem;">Among Industry's Highest</div>
-            </div>
-            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''">
-                <div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Safety</div>
-                <div style="color: white; font-weight: 700; font-size: 0.95rem;">Zero Harm to People & Planet</div>
-            </div>
-            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''">
-                <div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Community</div>
-                <div style="color: white; font-weight: 700; font-size: 0.95rem;">Improving Lives Around Us</div>
-            </div>
+            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''"><div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Quality</div><div style="color: white; font-weight: 700;">Highest Service Standards</div></div>
+            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''"><div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Retention</div><div style="color: white; font-weight: 700;">Among Industry's Highest</div></div>
+            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-right: 1px solid rgba(59,158,255,0.1); transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''"><div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Safety</div><div style="color: white; font-weight: 700;">Zero Harm to People & Planet</div></div>
+            <div style="padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; transition: background 0.3s;" onmouseover="this.style.background='rgba(59,158,255,0.06)'" onmouseout="this.style.background=''"><div style="color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;">Community</div><div style="color: white; font-weight: 700;">Improving Lives Around Us</div></div>
         </div>
-
         <div class="fade-up stagger-2" style="margin-top: 48px; text-align: center;">
-            <p style="color: rgba(201,228,255,0.6); font-size: 1.05rem; font-style: italic; font-weight: 300; max-width: 680px; margin: 0 auto; line-height: 1.8;">
-                "We continuously strive for Zero Harm to our people and our environment — committed to improving the quality of life of communities in and around our operations."
-            </p>
-            <div style="margin-top: 40px;">
-                <a href="contact.html" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 18px 40px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 36px rgba(59,158,255,0.4);"
-                   onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(59,158,255,0.6)'"
-                   onmouseout="this.style.transform=''; this.style.boxShadow='0 0 36px rgba(59,158,255,0.4)'">
-                    Request a Quote →
-                </a>
-            </div>
+            <p style="color: rgba(201,228,255,0.6); font-size: 1.05rem; font-style: italic; font-weight: 300; max-width: 680px; margin: 0 auto; line-height: 1.8;">"We continuously strive for Zero Harm to our people and our environment — committed to improving the quality of life of communities in and around our operations."</p>
+            <div style="margin-top: 40px;"><a href="contact.html" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 18px 40px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 36px rgba(59,158,255,0.4);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(59,158,255,0.6)'" onmouseout="this.style.transform=''; this.style.boxShadow='0 0 36px rgba(59,158,255,0.4)'">Request a Quote →</a></div>
         </div>
     </div>
 </section>
@@ -751,64 +644,41 @@
 <footer style="padding: 48px 0; background: var(--navy); border-top: 1px solid rgba(59,158,255,0.15);">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
-            <div>
-                <a href="index.html" class="nav-logo" style="display: block; margin-bottom: 8px;">LATI<span>MO</span></a>
-                <div style="color: rgba(255,255,255,0.35); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Cleaning & Supplies • Kathu, Northern Cape</div>
-            </div>
+            <div><a href="index.html" class="nav-logo" style="display: block; margin-bottom: 8px;">LATI<span>MO</span></a><div style="color: rgba(255,255,255,0.35); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Cleaning & Supplies • Kathu, Northern Cape</div></div>
             <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                <a href="index.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
-                <a href="about.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
-                <a href="#cleaning" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Cleaning</a>
-                <a href="#supplies" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Supplies</a>
-                <a href="contact.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+                <a href="index.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Home</a>
+                <a href="about.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">About</a>
+                <a href="#cleaning" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Cleaning</a>
+                <a href="#supplies" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Supplies</a>
+                <a href="#building" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Maintenance</a>
+                <a href="#carpentry" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Carpentry</a>
+                <a href="contact.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Contact</a>
             </div>
         </div>
         <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(59,158,255,0.4), transparent); margin: 32px 0;"></div>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <div style="color: rgba(255,255,255,0.25); font-size: 0.78rem;">© 2025 LATIMO (Pty) Ltd — Reg 2012/132257/07</div>
-            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.25); font-size: 0.78rem;">
-                <span style="color: #4ade80;">●</span> Level 1 B-BBEE &nbsp;|&nbsp;
-                <span style="color: var(--sky);">●</span> Zero Harm Policy
-            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.25); font-size: 0.78rem;"><span style="color: #4ade80;">●</span> Level 1 B-BBEE &nbsp;|&nbsp;<span style="color: var(--sky);">●</span> Zero Harm Policy</div>
         </div>
     </div>
 </footer>
 
-<!-- Floating CTA -->
 <a href="tel:0717188015" class="float-cta">📞 Call Now</a>
-
-<!-- BWO badge -->
-<div style="position: fixed; bottom: 28px; left: 28px; z-index: 90; background: var(--navy2); border: 1px solid rgba(59,158,255,0.3); color: rgba(255,255,255,0.7); padding: 10px 18px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(4,20,46,0.4);">
-    <span style="width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: pulse 1.8s infinite;"></span>
-    100% BWO • Level 1
-</div>
+<div style="position: fixed; bottom: 28px; left: 28px; z-index: 90; background: var(--navy2); border: 1px solid rgba(59,158,255,0.3); color: rgba(255,255,255,0.7); padding: 10px 18px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(4,20,46,0.4);"><span style="width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: pulse 1.8s infinite;"></span>100% BWO • Level 1</div>
 
 <script>
-    // intersection observer (original)
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // hamburger toggle (added)
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeHamburger = document.getElementById('closeHamburger');
-
-    function toggleMenu() {
-        mobileMenu.classList.toggle('active');
-    }
-
-    hamburgerBtn.addEventListener('click', toggleMenu);
-    closeHamburger.addEventListener('click', toggleMenu);
-
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-    });
+    function toggleMenu() { mobileMenu.classList.toggle('active'); }
+    if(hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+    if(closeHamburger) closeHamburger.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.remove('active'); }); });
 </script>
 </body>
 </html>

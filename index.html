@@ -87,7 +87,7 @@
         }
         #hero1 .bg-img {
             position: absolute; inset: 0;
-            background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop') center/cover no-repeat;
+            background: url('./assets/hero1.png') center/cover no-repeat;
             filter: brightness(0.3) saturate(1.3);
             transform: scale(1.05);
             animation: slowZoom 20s ease-in-out infinite alternate;
@@ -95,7 +95,7 @@
         @keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
         #hero1 .overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(120deg, rgba(4,20,46,0.97) 0%, rgba(7,30,69,0.85) 40%, rgba(20,89,192,0.35) 75%, transparent 100%);
+           /* background: linear-gradient(120deg, rgba(4,20,46,0.97) 0%, rgba(7,30,69,0.85) 40%, rgba(20,89,192,0.35) 75%, transparent 100%);*/
         }
         #hero1 .content {
             position: relative; z-index: 5;
@@ -215,7 +215,7 @@
         }
         #hero2 .bg-img {
             position: absolute; inset: 0;
-            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background: url('./assets/hero2.png') center/cover no-repeat;
             filter: brightness(0.25) saturate(1.5);
         }
         #hero2 .overlay {
@@ -265,7 +265,7 @@
         }
         #hero3 .bg-img {
             position: absolute; inset: 0;
-            background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background: url('./assets/hero3.png') center/cover no-repeat;
             filter: brightness(0.3) saturate(1.4);
         }
         #hero3 .overlay {
@@ -524,7 +524,7 @@
 </div>
 
 <nav>
-    <div class="nav-logo">LATI<span>MO</span></div>
+    <div class="nav-logo"><img src="assets/logotransp.png" style="height: 110px; margin-right: 8px;" alt="Latimo Logo"></div>
     <div class="nav-links">
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
@@ -543,21 +543,20 @@
     <div class="bg-img"></div>
     <div class="overlay grid-lines"></div>
 
-    <div class="bee-badge glass">
+    <!--<div class="bee-badge glass">
         <div style="color: var(--sky); font-family: 'Bebas Neue'; font-size: 2.6rem; letter-spacing: 3px; line-height: 1;">Level 1</div>
         <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">B-BBEE Certified</div>
         <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 0.7rem; letter-spacing: 1px;">100% Black Women Owned</div>
-    </div>
+    </div>-->
 
-    <div class="content">
+    <!--<div class="content">
         <div style="margin-bottom: 28px;" class="fade-up">
             <span class="pill pill-blue"><span class="dot-pulse"></span> Est. 2012 • Kathu, Northern Cape</span>
         </div>
 
-        <h1 class="fade-up stagger-1" style="font-size: clamp(4.5rem, 10vw, 10rem);">
-            <span class="display gradient-text">Building<br>Maintenance</span><br>
-            <span class="display" style="color: rgba(255,255,255,0.25); font-size: 0.55em;">& Industrial Safety</span>
-        </h1>
+        <h1 class="fade-up stagger-1" style="font-size: clamp(4.5rem, 10vw, 10rem); text-align: center;">
+    <span class="display gradient-text"><br>Latimo</span><br>
+</h1>
 
         <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.85); font-size: 1.15rem; font-weight: 300; max-width: 520px; margin-top: 24px; line-height: 1.7;">
             Northern Cape's trusted partner for industrial cleaning, safety signage, PPE supply, and building maintenance — delivering zero-harm solutions since 2012.
@@ -591,7 +590,54 @@
                 <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Harm Policy</div>
             </div>
         </div>
+    </div>-->
+
+    <div class="content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+    <div style="margin-bottom: 28px;" class="fade-up">
+        <!--<span class="pill pill-blue"><span class="dot-pulse"></span> Est. 2012 • Kathu, Northern Cape</span>-->
     </div>
+
+    <h1 class="fade-up stagger-1" style="font-size: clamp(4.5rem, 10vw, 10rem);">
+        <span class="display gradient-text"><br>Latimo</span><br>
+    </h1>
+
+    <p class="fade-up stagger-2" style="color: rgba(201,228,255,0.85); font-size: 1.15rem; font-weight: 300; max-width: 520px; margin-top: 24px; line-height: 1.7;">
+        Northern Cape's trusted partner for industrial cleaning, safety signage, PPE supply, and building maintenance — delivering zero-harm solutions since 2012.
+    </p>
+
+    <div class="fade-up stagger-3" style="display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; justify-content: center;">
+        <a href="#services" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 16px 36px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 0 40px rgba(59,158,255,0.4);"
+           onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(59,158,255,0.6)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow='0 0 40px rgba(59,158,255,0.4)'">
+            Our Services →
+        </a>
+
+        <a href="tel:0717188015" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.07); color: white; padding: 16px 36px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s, border-color 0.3s;"
+           onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.borderColor='rgba(255,255,255,0.5)'"
+           onmouseout="this.style.background='rgba(255,255,255,0.07)'; this.style.borderColor='rgba(255,255,255,0.2)'">
+            📞 071 718 8015
+        </a>
+    </div>
+
+    <div class="fade-up stagger-4" style="display: flex; gap: 0; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(59,158,255,0.2); max-width: 600px; justify-content: center;">
+        <div class="stat-item" style="border-right: 1px solid rgba(59,158,255,0.2); padding: 0 20px;">
+            <div class="stat-num accent-text">6+</div>
+            <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Years Active</div>
+        </div>
+
+        <div class="stat-item" style="border-right: 1px solid rgba(59,158,255,0.2); padding: 0 20px;">
+            <div class="stat-num accent-text">100%</div>
+            <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">BWO Company</div>
+        </div>
+
+        <div class="stat-item" style="padding: 0 20px;">
+            <div class="stat-num accent-text">0</div>
+            <div style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px;">Harm Policy</div>
+        </div>
+    </div>
+
+</div>
 
     <div class="scroll-hint">
         <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
@@ -955,7 +1001,7 @@
                     </div>
                     <div>
                         <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Email</label>
-                        <input class="contact-input" type="email" placeholder="your@email.com">
+                        <input class="contact2-input" type="email" placeholder="your@email.com">
                     </div>
                     <div>
                         <label style="display: block; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Service Required</label>
